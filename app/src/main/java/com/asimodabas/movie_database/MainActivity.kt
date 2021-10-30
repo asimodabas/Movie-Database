@@ -14,11 +14,19 @@ class MainActivity : AppCompatActivity() {
         veritabaniKopyala()
 
         val vt=DatabaseHelper(this)
-        val liste=Kategorilerdao().tumKategoriler(vt)
+     //   val liste=Kategorilerdao().tumKategoriler(vt)
 
-        for (k in liste){
-            Log.e("Kategori Adı:",k.kategori_ad)
-            Log.e("Kategori Id:",k.kategori_id.toString())
+        val liste = Filmlerdao().tumFilmlerByKategoriId(vt,2)
+
+        for (f in liste){
+            Log.e("Film Id:",(f.film_id.toString()))
+            Log.e("Film Adı:",(f.film_ad))
+            Log.e("Film Yıl:",(f.film_yil.toString()))
+            Log.e("Film Resim:",(f.film_resim))
+            Log.e("Film Kategori Id:",(f.kategori.kategori_id.toString()))
+            Log.e("Film Kategori Ad:",(f.kategori.kategori_ad))
+            Log.e("Film Yonetmen Id:",(f.yonetmen.yonetmen_id.toString()))
+            Log.e("Film Yonetmen Ad:",(f.yonetmen.yonetmen_ad))
         }
     }
 
